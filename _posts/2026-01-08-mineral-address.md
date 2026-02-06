@@ -1,7 +1,9 @@
 ---
 layout: post
-title:  "All about mineral addresses"
+title:  "Mineral Memory Addresses in BW 1.16.1"
 ---
+This entry is about mineral memory addresses in StarCraft: Brood War patch 1.16.1
+
 # Memory Scanner
 I used cheat engine for memory scanning which can be downloaded [here](https://www.cheatengine.org/downloads.php)  
 Clicking on the download link doesn't seem to download anything for me. I had to go to the link to download it.  
@@ -16,14 +18,15 @@ Create a single player game on Astral Balance.
 The scan found three memory addresses.  
 The value of the 2nd and 3rd addresses revert back to the original value after changing them.  
 So the first address is the address holding the mineral value.  
+![p1](/assets/3_min_addresses.png)
 
 The map Astral Balance only has a top and bottom position.  
 When I am on the bottom position the mineral address is StarCraft.exe+17F0F0 (0x57F0F0) and StarCraft.exe+17F0F4 at the top position.  
 The mineral addresses goes up by 4 bytes.  
-It the address for StarCraft.exe is 0x400000.
+The address for StarCraft.exe is 0x400000.
 
 If you open the map C:\Program Files (x86)\Starcraft\Maps\BroodWar\(2)Astral Balance.scm with StarEdit.exe you can see that Player 1 (Red User Selectable) is at the bottom.  
-![p1](/assets/astral_balance_p1.png)
+![p2](/assets/astral_balance_p1.png)
 
 While the 1st mineral address changes based on your starting location, the 2nd address which is StarCraft.exe+28C230 (0x68C230) and is only readable is constant even in a new game.    
 
