@@ -73,7 +73,7 @@ Visual Studio should be run as administrator or OpenProcess doesn't work.
 Starter code was used from [here](https://gamehacking.academy/pages/3/02/)  
 
 Delphi port of this code was tested on Delphi 12 on Windows 11 and also should be run as an administrator.  
-```dpr
+```pascal
 program Project1;
 {$APPTYPE CONSOLE}
 
