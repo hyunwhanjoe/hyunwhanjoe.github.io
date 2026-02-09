@@ -32,13 +32,16 @@ While the 1st mineral address changes based on your starting location, the 2nd a
 
 # Finding your Player Number Memory Address
 Create a single player game on Astral Balance.  
-(New/first) scan for the player number based on your position. For example you are player 2 if you are on top and player 1 if on bottom. Keep making a new game and (next) scan based on your player number. Eventually after switching player numbers you will find two addresses.  
+(New/first) scan for the player number based on your position.  
+For example you are player 2 if you are on top and player 1 if on bottom.  
+Keep making a new game and (next) scan based on your player number.  
+Eventually after switching player numbers you will find several addresses.  
+This address keeps track which player number you are.  
 StarCraft.exe+17F0B0 (0x57F0B0)  
-StarCraft.exe+19B460  
-These two addresses keep track which player number you are.  
+![p3](/assets/player_num_address.png)
 
 # Finding your Mineral Address based on your Player Number
-If during a game you read your player number from 0x57F0B0, subtract your player number by one, multiply by 4 and add by 0x57F0F0, then you can automatically calculate your mineral address and write to it.  
+If during a game you read your player number from 0x57F0B0, subtract your player number by one, multiply by 4 and add by 0x57F0F0, then you can automatically find your mineral address and write to it.  
 For example:  
 ```c++
 #include <Windows.h>
@@ -70,7 +73,7 @@ Visual Studio should be run as administrator or OpenProcess doesn't work.
 Starter code was used from [here](https://gamehacking.academy/pages/3/02/)  
 
 Delphi port of this code was tested on Delphi 12 on Windows 11 and also should be run as an administrator.  
-```delphi
+```dpr
 program Project1;
 {$APPTYPE CONSOLE}
 
@@ -116,7 +119,7 @@ First, attach starcraft into a debugger. I used [x32dbg](https://sourceforge.net
 I couldn't find starcraft at first when trying to attach it. I checked "Enable Debug Privilege" in Preferences, Engine to see it.  
 After starting a game on Astral Balance, I put a Hardware, Write, Dword breakpoint on the address of my player number mineral.  
 The game paused on the instruction at 0x004672C2 after spending minerals.    
-```asm
+```x86asm
 mov edx, dword ptr ds:[eax+0x57F0F0]
 mov ecx, dword ptr ds:[eax+0x6CA51C]
 sub edx, ecx
